@@ -53,3 +53,30 @@ INSERT INTO tb_medico (nome, sobrenome, consulta_Valor, convenio, avaliacao, esp
 INSERT INTO tb_medico (nome, sobrenome, consulta_Valor, convenio, avaliacao, especialidade_id, endereco_id) VALUES ('Bruno', 'Red', 300.00, false, 4.8, 4, 4);
 INSERT INTO tb_medico (nome, sobrenome, consulta_Valor, convenio, avaliacao, especialidade_id, endereco_id) VALUES ('Rodrigo', 'Black', 500.00, true, 4.9, 5, 1);
 
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11998765431', 1);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11898765432', 1);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11798765433', 2);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11698765434', 2);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11598765435', 3);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11498765436', 3);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11398765437', 4);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11298765438', 4);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11198765439', 5);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11098765431', 5);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11998765432', 6);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11898765433', 7);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11798765434', 8);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11698765435', 9);
+INSERT INTO tb_telefone (telefone, user_id) VALUES ('11598765436', 10);
+
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-05T07:00:00Z', 'Lombalgia', 'Dores fortes na lombar', 10, 1);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-08-06T08:10:00Z', 'Bursite', 'Dores no ombro', 9, 1);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-09-07T09:20:00Z', 'Sinusite', 'Dores de cabeça', 8, 2);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-10-08T10:30:00Z', 'Rinite', 'Alergia respiratória', 7, 2);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-11-09T11:40:00Z', 'AVC', 'Confusão mental', 6, 3);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-12-10T12:50:00Z', 'Enxaqueca', 'Sensibilidade luz, som e dores de cabeça', 5, 3);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-01-11T13:60:00Z', 'Desvio do septo', 'Dificuldade respirar, coriza', 7, 4);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-12T14:00:00Z', 'Amigdalite', 'Mau hálito, inchaço dos gânglios', 3, 4);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-03-13T15:10:00Z', 'Candidíase', 'Argor vaginal', 9, 5);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-04-14T16:20:00Z', 'Nódulo benigno no seio esquerdo', 'Desconforto', 6, 5);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-05T07:00:00Z', 'Covid', 'Febre alta', 10, 2);
