@@ -1,7 +1,9 @@
 package com.naconsulta.naconsulta.services;
 
+import com.naconsulta.naconsulta.dtos.UserFormDto;
 import com.naconsulta.naconsulta.entities.User;
 import com.naconsulta.naconsulta.repositories.UserRepository;
+import com.naconsulta.naconsulta.services.exceptions.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,13 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository repository;
+
+    @Transactional(readOnly = true)
+    public UserFormDto findById(Long id) {
+        Optional<User> obj = repository.findById(id);
+        User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Resource not found"));
+        return new UserFormDto(entity, entity.getTelefones());
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

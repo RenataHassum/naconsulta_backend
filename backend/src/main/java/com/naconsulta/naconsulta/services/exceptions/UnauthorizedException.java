@@ -1,4 +1,4 @@
-package com.naconsulta.naconsulta.services;
+package com.naconsulta.naconsulta.services.exceptions;
 
 public class UnauthorizedException extends RuntimeException {
 

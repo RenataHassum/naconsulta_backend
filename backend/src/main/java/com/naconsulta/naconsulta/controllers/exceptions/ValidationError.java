@@ -1,4 +1,4 @@
-package com.naconsulta.naconsulta.controllers;
+package com.naconsulta.naconsulta.controllers.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

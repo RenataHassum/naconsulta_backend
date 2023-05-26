@@ -77,6 +77,6 @@ INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id
 INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-12-10T12:50:00Z', 'Enxaqueca', 'Sensibilidade luz, som e dores de cabeça', 5, 3);
 INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-01-11T13:60:00Z', 'Desvio do septo', 'Dificuldade respirar, coriza', 7, 4);
 INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-12T14:00:00Z', 'Amigdalite', 'Mau hálito, inchaço dos gânglios', 3, 4);
-INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-03-13T15:10:00Z', 'Candidíase', 'Argor vaginal', 9, 5);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-03-13T15:10:00Z', 'Candidíase', 'Ardor vaginal', 9, 5);
 INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-04-14T16:20:00Z', 'Nódulo benigno no seio esquerdo', 'Desconforto', 6, 5);
 INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-05T07:00:00Z', 'Covid', 'Febre alta', 10, 2);

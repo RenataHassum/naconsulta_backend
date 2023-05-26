@@ -1,9 +1,9 @@
-package com.naconsulta.naconsulta.controllers;
+package com.naconsulta.naconsulta.controllers.exceptions;
 
-import com.naconsulta.naconsulta.services.DatabaseException;
-import com.naconsulta.naconsulta.services.ForbiddenException;
-import com.naconsulta.naconsulta.services.ResourceNotFoundException;
-import com.naconsulta.naconsulta.services.UnauthorizedException;
+import com.naconsulta.naconsulta.services.exceptions.DatabaseException;
+import com.naconsulta.naconsulta.services.exceptions.ForbiddenException;
+import com.naconsulta.naconsulta.services.exceptions.ResourceNotFoundException;
+import com.naconsulta.naconsulta.services.exceptions.UnauthorizedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
