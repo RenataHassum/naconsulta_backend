@@ -20,7 +20,7 @@ public class Consulta implements Serializable {
     @Column(columnDefinition = "TEXT")
     private String diagnostico;
 
-    private String sintomas;
+    private String sintoma;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -32,12 +32,60 @@ public class Consulta implements Serializable {
 
     public Consulta() {}
 
-    public Consulta(Long id, Instant dataConsulta, String diagnostico, String sintomas, User user, Medico medico) {
+    public Consulta(Long id, Instant dataConsulta, String diagnostico, String sintoma, User user, Medico medico) {
         this.id = id;
         this.dataConsulta = dataConsulta;
         this.diagnostico = diagnostico;
-        this.sintomas = sintomas;
+        this.sintoma = sintoma;
         this.user = user;
+        this.medico = medico;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Instant getDataConsulta() {
+        return dataConsulta;
+    }
+
+    public void setDataConsulta(Instant dataConsulta) {
+        this.dataConsulta = dataConsulta;
+    }
+
+    public String getDiagnostico() {
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
+    }
+
+    public String getSintoma() {
+        return sintoma;
+    }
+
+    public void setSintoma(String sintoma) {
+        this.sintoma = sintoma;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
         this.medico = medico;
     }
 
