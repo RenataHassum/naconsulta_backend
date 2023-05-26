@@ -80,3 +80,4 @@ INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id
 INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-03-13T15:10:00Z', 'Candidíase', 'Ardor vaginal', 9, 5);
 INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-04-14T16:20:00Z', 'Nódulo benigno no seio esquerdo', 'Desconforto', 6, 5);
 INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-05T07:00:00Z', 'Covid', 'Febre alta', 10, 2);
+INSERT INTO tb_consulta (data_Consulta, diagnostico, sintoma, user_id, medico_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-11-12T09:00:00Z', '', '', 7, 1);
