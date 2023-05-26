@@ -24,12 +24,12 @@ public class Medico implements Serializable {
     @JoinColumn(name = "especialidade_id")
     private Especialidade especialidade;
 
-    @OneToMany(mappedBy = "medico")
-    private List<Consulta> consultas = new ArrayList<>();
-
     @ManyToOne
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
+
+    @OneToMany(mappedBy = "medico")
+    private List<Consulta> consultas = new ArrayList<>();
 
     public Medico() {}
 
@@ -100,16 +100,16 @@ public class Medico implements Serializable {
         this.especialidade = especialidade;
     }
 
-    public List<Consulta> getConsultas() {
-        return consultas;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+
+    public List<Consulta> getConsultas() {
+        return consultas;
     }
 
     @Override
