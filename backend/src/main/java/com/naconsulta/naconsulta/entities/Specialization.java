@@ -2,9 +2,7 @@ package com.naconsulta.naconsulta.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 
 @Entity
@@ -18,7 +16,7 @@ public class Specialization implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "specialization")
-    private List<Doctor> doctors = new ArrayList<>();
+    private Set<Doctor> doctors = new HashSet<>();
 
     public Specialization() {}
 
@@ -43,7 +41,7 @@ public class Specialization implements Serializable {
         this.name = name;
     }
 
-    public List<Doctor> getDoctors() {
+    public Set<Doctor> getDoctors() {
         return doctors;
     }
 
