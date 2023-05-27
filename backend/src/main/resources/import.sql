@@ -224,20 +224,23 @@ INSERT INTO tb_telephone (telephone, user_id) VALUES ('11598665434', 46);
 INSERT INTO tb_telephone (telephone, user_id) VALUES ('11598865433', 47);
 INSERT INTO tb_telephone (telephone, user_id) VALUES ('11598065439', 48);
 
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-05T07:00:00Z', 'Lombalgia', 'Dores fortes na lombar', 10, 1);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-08-06T08:10:00Z', 'Bursite', 'Dores no ombro', 9, 1);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-09-07T09:20:00Z', 'Sinusite', 'Dores de cabeça', 8, 2);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-10-08T10:30:00Z', 'Rinite', 'Alergia respiratória', 7, 2);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-11-09T11:40:00Z', 'AVC', 'Confusão mental', 6, 3);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-12-10T12:50:00Z', 'Enxaqueca', 'Sensibilidade luz, som e dores de cabeça', 5, 3);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-01-11T13:00:00Z', 'Desvio do septo', 'Dificuldade respirar, coriza', 7, 4);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-12T14:00:00Z', 'Amigdalite', 'Mau hálito, inchaço dos gânglios', 3, 4);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-03-13T15:10:00Z', 'Candidíase', 'Ardor vaginal', 9, 5);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-04-14T16:20:00Z', 'Nódulo benigno no seio esquerdo', 'Desconforto', 11, 5);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-05T07:00:00Z', 'Covid', 'Febre alta', 10, 2);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-11-03T10:00:00Z', '', '', 40, 7);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-09-02T11:00:00Z', '', '', 23, 10);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-08-01T12:00:00Z', '', '', 19, 11);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-07-09T13:00:00Z', '', '', 39, 9);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-12-11T14:00:00Z', '', '', 40, 3);
---INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-12-10T15:00:00Z', '', '', 31, 17);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-05T07:00:00Z', 'Lombalgia', 'Dores fortes na lombar', 10, 1);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-08-06T08:10:00Z', 'Bursite', 'Dores no ombro', 9, 1);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-09-07T09:20:00Z', 'Sinusite', 'Dores de cabeça', 8, 2);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-10-08T10:30:00Z', 'Rinite', 'Alergia respiratória', 7, 2);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-11-09T11:40:00Z', 'AVC', 'Confusão mental', 6, 3);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2021-12-10T12:50:00Z', 'Enxaqueca', 'Sensibilidade luz, som e dores de cabeça', 5, 3);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2022-01-11T13:00:00Z', 'Desvio do septo', 'Dificuldade respirar, coriza', 7, 4);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-12T14:00:00Z', 'Amigdalite', 'Mau hálito, inchaço dos gânglios', 3, 4);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-03-13T15:10:00Z', 'Candidíase', 'Ardor vaginal', 9, 5);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-05T07:00:00Z', 'Covid', 'Febre alta', 10, 2);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-11-03T10:00:00Z', '', '', 40, 7);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-09-02T11:00:00Z', '', '', 23, 10);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-08-01T12:00:00Z', '', '', 19, 11);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-07-09T13:00:00Z', '', '', 39, 9);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-12-11T14:00:00Z', '', '', 40, 3);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-12-10T15:00:00Z', '', '', 31, 17);
+
+INSERT INTO tb_state (name) VALUES ('São Paulo');
+
+INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1)
