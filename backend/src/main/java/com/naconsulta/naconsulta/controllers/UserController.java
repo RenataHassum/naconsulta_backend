@@ -1,6 +1,7 @@
 package com.naconsulta.naconsulta.controllers;
 
 import com.naconsulta.naconsulta.dtos.UserFormDto;
+import com.naconsulta.naconsulta.dtos.UserMaxDto;
 import com.naconsulta.naconsulta.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,12 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @GetMapping(value = "/profile")
+    public ResponseEntity<UserMaxDto> userLogged() {
+        UserMaxDto dto = service.userLogged();
+        return ResponseEntity.ok().body(dto);
+    }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserFormDto> findById(@PathVariable Long id) {

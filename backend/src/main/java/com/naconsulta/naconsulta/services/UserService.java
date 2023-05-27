@@ -1,6 +1,7 @@
 package com.naconsulta.naconsulta.services;
 
 import com.naconsulta.naconsulta.dtos.UserFormDto;
+import com.naconsulta.naconsulta.dtos.UserMaxDto;
 import com.naconsulta.naconsulta.entities.User;
 import com.naconsulta.naconsulta.repositories.UserRepository;
 import com.naconsulta.naconsulta.services.exceptions.ResourceNotFoundException;
@@ -27,11 +28,17 @@ public class UserService implements UserDetailsService {
     private AuthService authService;
 
     @Transactional(readOnly = true)
+    public UserMaxDto userLogged() {
+        User entity = authService.authenticated();
+        return new UserMaxDto(entity, entity.getPhones(), entity.getRoles(), entity.getAppointments());
+    }
+
+    @Transactional(readOnly = true)
     public UserFormDto findById(Long id) {
         authService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
         User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Resource not found"));
-        return new UserFormDto(entity, entity.getTelephones());
+        return new UserFormDto(entity, entity.getPhones());
     }
 
     @Override

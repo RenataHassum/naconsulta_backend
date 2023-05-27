@@ -26,7 +26,7 @@ public class User implements UserDetails,Serializable {
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private List<Telephone> telephones = new ArrayList<>();
+    private List<Telephone> phones = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Appointment> appointments = new ArrayList<>();
@@ -98,8 +98,8 @@ public class User implements UserDetails,Serializable {
         this.password = password;
     }
 
-    public List<Telephone> getTelephones() {
-        return telephones;
+    public List<Telephone> getPhones() {
+        return phones;
     }
 
     public List<Appointment> getAppointments() {
