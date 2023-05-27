@@ -31,7 +31,7 @@ public class UserService implements UserDetailsService {
         authService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
         User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Resource not found"));
-        return new UserFormDto(entity, entity.getTelefones());
+        return new UserFormDto(entity, entity.getTelephones());
     }
 
     @Override

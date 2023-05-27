@@ -5,24 +5,24 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_telefone")
-public class Telefone implements Serializable {
+@Table(name = "tb_telephone")
+public class Telephone implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String telefone;
+    private String telephone;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Telefone() {}
+    public Telephone() {}
 
-    public Telefone(Long id, String telefone, User user) {
+    public Telephone(Long id, String telephone, User user) {
         this.id = id;
-        this.telefone = telefone;
+        this.telephone = telephone;
         this.user = user;
     }
 
@@ -34,12 +34,12 @@ public class Telefone implements Serializable {
         this.id = id;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
     public User getUser() {
@@ -53,8 +53,8 @@ public class Telefone implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Telefone telefone)) return false;
-        return Objects.equals(getId(), telefone.getId());
+        if (!(o instanceof Telephone telephone)) return false;
+        return Objects.equals(getId(), telephone.getId());
     }
 
     @Override

@@ -1,45 +1,40 @@
 package com.naconsulta.naconsulta.dtos;
 
-import com.naconsulta.naconsulta.entities.Consulta;
-import com.naconsulta.naconsulta.entities.Telefone;
+import com.naconsulta.naconsulta.entities.Telephone;
 import com.naconsulta.naconsulta.entities.User;
 
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class UserFormDto implements Serializable {
     private static final long serialVersionUID = 1L;
-
     private Long id;
-    private String nome;
-    private String sobrenome;
+    private String firstName;
+    private String lastName;
     private String email;
 
-    private List<TelefoneDto> telefones = new ArrayList<>();
+    private List<TelephoneDto> phones = new ArrayList<>();
 
     public UserFormDto() {}
 
-    public UserFormDto(Long id, String nome, String sobrenome, String email) {
+    public UserFormDto(Long id, String firstName, String lastName, String email) {
         this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
     }
 
     public UserFormDto(User entity) {
         id = entity.getId();
-        nome = entity.getNome();
-        sobrenome = entity.getSobrenome();
+        firstName = entity.getFirstName();
+        lastName = entity.getLastName();
         email = entity.getEmail();
     }
 
-    public UserFormDto(User entity, List<Telefone> telefones) {
+    public UserFormDto(User entity, List<Telephone> phones) {
         this(entity);
-        telefones.forEach(x -> this.telefones.add(new TelefoneDto(x)));
+        phones.forEach(phone -> this.phones.add(new TelephoneDto(phone)));
     }
 
     public Long getId() {
@@ -50,20 +45,20 @@ public class UserFormDto implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -74,7 +69,7 @@ public class UserFormDto implements Serializable {
         this.email = email;
     }
 
-    public List<TelefoneDto> getTelefones() {
-        return telefones;
+    public List<TelephoneDto> getPhones() {
+        return phones;
     }
 }

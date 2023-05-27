@@ -17,19 +17,19 @@ public class User implements UserDetails,Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private String sobrenome;
-    private String sexo;
+    private String firstName;
+    private String lastName;
+    private String gender;
 
     @Column(unique = true)
     private String email;
     private String password;
 
     @OneToMany(mappedBy = "user")
-    private List<Telefone> telefones = new ArrayList<>();
+    private List<Telephone> telephones = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
-    private List<Consulta> consultas = new ArrayList<>();
+    private List<Appointment> appointments = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_role",
@@ -40,11 +40,11 @@ public class User implements UserDetails,Serializable {
     public User() {
     }
 
-    public User(Long id, String nome, String sobrenome, String sexo, String email, String password) {
+    public User(Long id, String firstName, String lastName, String gender, String email, String password) {
         this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.sexo = sexo;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
         this.email = email;
         this.password = password;
     }
@@ -57,28 +57,28 @@ public class User implements UserDetails,Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSobrenome() {
-        return sobrenome;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getSexo() {
-        return sexo;
+    public String getGender() {
+        return gender;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getEmail() {
@@ -89,6 +89,7 @@ public class User implements UserDetails,Serializable {
         this.email = email;
     }
 
+    @Override
     public String getPassword() {
         return password;
     }
@@ -97,15 +98,17 @@ public class User implements UserDetails,Serializable {
         this.password = password;
     }
 
-    public List<Telefone> getTelefones() {
-        return telefones;
+    public List<Telephone> getTelephones() {
+        return telephones;
     }
 
-    public List<Consulta> getConsultas() {
-        return consultas;
+    public List<Appointment> getAppointments() {
+        return appointments;
     }
 
-    public Set<Role> getRoles() { return roles; }
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
     @Override
     public boolean equals(Object o) {

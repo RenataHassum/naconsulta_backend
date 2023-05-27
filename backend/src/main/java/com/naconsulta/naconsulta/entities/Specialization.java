@@ -6,24 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 @Entity
-@Table(name = "tb_especialidade")
-public class Especialidade implements Serializable {
+@Table(name = "tb_specialization")
+public class Specialization implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String nome;
+    private String name;
 
-    @OneToMany(mappedBy = "especialidade")
-    private List<Medico> medicos = new ArrayList<>();
+    @OneToMany(mappedBy = "specialization")
+    private List<Doctor> doctors = new ArrayList<>();
 
-    public Especialidade() {}
+    public Specialization() {}
 
-    public Especialidade(long id, String nome) {
+    public Specialization(long id, String name) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
     }
 
     public long getId() {
@@ -34,22 +35,22 @@ public class Especialidade implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<Medico> getMedicos() {
-        return medicos;
+    public List<Doctor> getDoctors() {
+        return doctors;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Especialidade that)) return false;
+        if (!(o instanceof Specialization that)) return false;
         return getId() == that.getId();
     }
 
