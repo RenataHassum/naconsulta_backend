@@ -23,6 +23,10 @@ public class Address implements Serializable {
     @OneToMany(mappedBy = "address")
     private List<Doctor> doctors = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+
     public Address() {}
 
     public Address(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room) {
@@ -85,16 +89,12 @@ public class Address implements Serializable {
     public List<Doctor> getDoctors() {
         return doctors;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Address address)) return false;
-        return Objects.equals(getId(), address.getId());
+    
+    public City getCity() {
+        return city;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
+    public void setCity(City city) {
+        this.city = city;
     }
 }
