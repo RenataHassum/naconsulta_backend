@@ -144,10 +144,14 @@ INSERT INTO tb_specialization (name) VALUES ('Hematologia e hemoterapia');
 INSERT INTO tb_specialization (name) VALUES ('Psiquiatria');
 INSERT INTO tb_specialization (name) VALUES ('Nutrologia');
 
-INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room) VALUES ('Rua Downson', '100', 'Downson', '13208050', '2A');
-INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room) VALUES ('Rua Betina', '200', 'Betina', '14208050', '3B');
-INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room) VALUES ('Rua Houston', '300', 'Houston', '15208050', '4C');
-INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room) VALUES ('Rua Liberty', '400', 'Liberty', '16208050', '5D');
+INSERT INTO tb_state (name) VALUES ('São Paulo');
+
+INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1)
+
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Downson', '100', 'Downson', '13208050', '2A', 1);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Betina', '200', 'Betina', '14208050', '3B', 1);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Houston', '300', 'Houston', '15208050', '4C', 1);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Liberty', '400', 'Liberty', '16208050', '5D', 1);
 
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Alex', 'Brown', 500.00, true, 5.0, 1, 1);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Monica', 'Railway', 350.00, true, 4.8, 1, 1);
@@ -241,6 +245,3 @@ INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-12-11T14:00:00Z', '', '', 40, 3);
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-12-10T15:00:00Z', '', '', 31, 17);
 
-INSERT INTO tb_state (name) VALUES ('São Paulo');
-
-INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1)

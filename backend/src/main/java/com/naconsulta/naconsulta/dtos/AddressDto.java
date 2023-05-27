@@ -13,25 +13,28 @@ public class AddressDto implements Serializable {
     private String neighborhood;
     private Integer zipCode;
     private String room;
+    private CityDto city;
 
     public AddressDto() {}
 
-    public AddressDto(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room) {
+    public AddressDto(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, CityDto city) {
         this.id = id;
         this.publicPlace = publicPlace;
         this.number = number;
         this.neighborhood = neighborhood;
         this.zipCode = zipCode;
         this.room = room;
+        this.city = city;
     }
 
     public AddressDto(Address entity) {
-        id = entity.getId();
-        publicPlace = entity.getPublicPlace();
-        number = entity.getNumber();
-        neighborhood = entity.getNeighborhood();
-        zipCode = entity.getZipCode();
-        room = entity.getRoom();
+        this.id = entity.getId();
+        this.publicPlace = entity.getPublicPlace();
+        this.number = entity.getNumber();
+        this.neighborhood = entity.getNeighborhood();
+        this.zipCode = entity.getZipCode();
+        this.room = entity.getRoom();
+        this.city = new CityDto(entity.getCity());
     }
 
     public Long getId() {
@@ -80,5 +83,13 @@ public class AddressDto implements Serializable {
 
     public void setRoom(String room) {
         this.room = room;
+    }
+
+    public CityDto getCity() {
+        return city;
+    }
+
+    public void setCity(CityDto city) {
+        this.city = city;
     }
 }
