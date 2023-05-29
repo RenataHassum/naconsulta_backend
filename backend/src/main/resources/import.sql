@@ -241,10 +241,12 @@ INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-02-12T14:00:00Z', 'Amigdalite', 'Mau hálito, inchaço dos gânglios', 3, 4);
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-03-13T15:10:00Z', 'Candidíase', 'Ardor vaginal', 9, 5);
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2020-07-05T07:00:00Z', 'Covid', 'Febre alta', 10, 2);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2024-01-09T15:00:00Z', '', '', 3, 15);
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-11-03T10:00:00Z', '', '', 40, 7);
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-09-02T11:00:00Z', '', '', 23, 10);
-INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-08-01T12:00:00Z', '', '', 19, 11);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2024-08-01T12:00:00Z', '', '', 19, 11);
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-07-09T13:00:00Z', '', '', 39, 9);
-INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-12-11T14:00:00Z', '', '', 40, 3);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2024-12-11T14:00:00Z', '', '', 40, 3);
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-12-10T15:00:00Z', '', '', 31, 17);
+
 

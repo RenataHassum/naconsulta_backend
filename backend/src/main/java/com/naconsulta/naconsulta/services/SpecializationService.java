@@ -1,6 +1,7 @@
 package com.naconsulta.naconsulta.services;
 
 import com.naconsulta.naconsulta.dtos.SpecializationDto;
+import com.naconsulta.naconsulta.dtos.SpecializationMinDto;
 import com.naconsulta.naconsulta.entities.Specialization;
 import com.naconsulta.naconsulta.repositories.SpecializationRepository;
 import com.naconsulta.naconsulta.services.exceptions.ResourceNotFoundException;
@@ -25,8 +26,8 @@ public class SpecializationService {
     }
 
     @Transactional(readOnly = true)
-    public List<SpecializationDto> findAllOrByName(String name) {
+    public List<SpecializationMinDto> findAllOrByName(String name) {
         List<Specialization> result = repository.searchByName(name);
-        return result.stream().map(x -> new SpecializationDto(x)).collect(Collectors.toList());
+        return result.stream().map(x -> new SpecializationMinDto(x)).collect(Collectors.toList());
     }
 }

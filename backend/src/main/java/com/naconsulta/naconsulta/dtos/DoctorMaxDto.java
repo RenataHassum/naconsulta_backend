@@ -7,19 +7,23 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctorDto implements Serializable {
+public class DoctorMaxDto implements Serializable {
     private static final long serialVersionUID = 1L;
+
     private Long id;
     private String firstName;
     private String lastName;
     private Double appointmentPrice;
     private boolean insurance;
     private Double evaluation;
-    private String specialization;
-    private AddressMinDto address;
+    private SpecializationDto specialization;
+    private AddressMaxDto address;
     private List<AppointmentDto> appointments = new ArrayList<>();
 
-    public DoctorDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, String specialization, AddressMinDto address) {
+    public DoctorMaxDto() {
+    }
+
+    public DoctorMaxDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, SpecializationDto specialization, AddressMaxDto address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,20 +34,20 @@ public class DoctorDto implements Serializable {
         this.address = address;
     }
 
-    public DoctorDto(Doctor entity) {
+    public DoctorMaxDto(Doctor entity) {
         id = entity.getId();
         firstName = entity.getFirstName();
         lastName = entity.getLastName();
         appointmentPrice = entity.getAppointmentPrice();
         insurance = entity.isInsurance();
         evaluation = entity.getEvaluation();
-        specialization = entity.getSpecialization().getName();
-        address = new AddressMinDto(entity.getAddress());
+        specialization = new SpecializationDto(entity.getSpecialization());
+        address = new AddressMaxDto(entity.getAddress());
     }
 
-    public DoctorDto(Doctor entity, List<Appointment> appointments) {
+    public DoctorMaxDto(Doctor entity, List<Appointment> appointments) {
         this(entity);
-        appointments.forEach(appointment -> this.appointments.add(new AppointmentDto(appointment)));
+        appointments.forEach(app -> this.appointments.add(new AppointmentDto(app)));
     }
 
     public Long getId() {
@@ -94,23 +98,24 @@ public class DoctorDto implements Serializable {
         this.evaluation = evaluation;
     }
 
-    public String getSpecialization() {
+    public SpecializationDto getSpecialization() {
         return specialization;
     }
 
-    public void setSpecialization(String specialization) {
+    public void setSpecialization(SpecializationDto specialization) {
         this.specialization = specialization;
     }
 
-    public AddressMinDto getAddress() {
+    public AddressMaxDto getAddress() {
         return address;
     }
 
-    public void setAddress(AddressMinDto address) {
+    public void setAddress(AddressMaxDto address) {
         this.address = address;
     }
 
     public List<AppointmentDto> getAppointments() {
         return appointments;
     }
+
 }

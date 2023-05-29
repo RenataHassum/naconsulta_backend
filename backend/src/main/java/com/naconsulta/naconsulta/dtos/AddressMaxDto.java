@@ -1,10 +1,13 @@
 package com.naconsulta.naconsulta.dtos;
 
 import com.naconsulta.naconsulta.entities.Address;
+import com.naconsulta.naconsulta.entities.Doctor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AddressMinDto implements Serializable {
+public class AddressMaxDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
@@ -15,10 +18,12 @@ public class AddressMinDto implements Serializable {
     private String room;
     private CityDto city;
 
-    public AddressMinDto() {
+    private List<DoctorMaxDto> doctors = new ArrayList<>();
+
+    public AddressMaxDto() {
     }
 
-    public AddressMinDto(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, CityDto city) {
+    public AddressMaxDto(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, CityDto city) {
         this.id = id;
         this.publicPlace = publicPlace;
         this.number = number;
@@ -28,7 +33,7 @@ public class AddressMinDto implements Serializable {
         this.city = city;
     }
 
-    public AddressMinDto(Address entity) {
+    public AddressMaxDto(Address entity) {
         id = entity.getId();
         publicPlace = entity.getPublicPlace();
         number = entity.getNumber();
@@ -37,6 +42,12 @@ public class AddressMinDto implements Serializable {
         room = entity.getRoom();
         city = new CityDto(entity.getCity());
     }
+
+    public AddressMaxDto(Address entity, List<Doctor> doctors) {
+        this(entity);
+        doctors.forEach(doctor -> this.doctors.add(new DoctorMaxDto(doctor)));
+    }
+
 
     public Long getId() {
         return id;
@@ -93,5 +104,10 @@ public class AddressMinDto implements Serializable {
     public void setCity(CityDto city) {
         this.city = city;
     }
+
+    public List<DoctorMaxDto> getDoctors() {
+        return doctors;
+    }
+
 }
 

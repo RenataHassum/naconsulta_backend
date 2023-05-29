@@ -6,22 +6,26 @@ import java.io.Serializable;
 
 public class DoctorMinDto implements Serializable {
     private static final long serialVersionUID = 1L;
+
     private Long id;
     private String firstName;
     private String lastName;
     private Double appointmentPrice;
     private boolean insurance;
     private Double evaluation;
-    private String specialization;
+    private AddressMinDto address;
 
-    public DoctorMinDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, String specialization) {
+    public DoctorMinDto() {
+    }
+
+    public DoctorMinDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, AddressMinDto address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.appointmentPrice = appointmentPrice;
         this.insurance = insurance;
         this.evaluation = evaluation;
-        this.specialization = specialization;
+        this.address = address;
     }
 
     public DoctorMinDto(Doctor entity) {
@@ -31,7 +35,7 @@ public class DoctorMinDto implements Serializable {
         appointmentPrice = entity.getAppointmentPrice();
         insurance = entity.isInsurance();
         evaluation = entity.getEvaluation();
-        specialization = entity.getSpecialization().getName();
+        address = new AddressMinDto(entity.getAddress());
     }
 
     public Long getId() {
@@ -81,13 +85,12 @@ public class DoctorMinDto implements Serializable {
     public void setEvaluation(Double evaluation) {
         this.evaluation = evaluation;
     }
-
-    public String getSpecialization() {
-        return specialization;
+    
+    public AddressMinDto getAddress() {
+        return address;
     }
 
-    public void setSpecialization(String specialization) {
-        this.specialization = specialization;
+    public void setAddress(AddressMinDto address) {
+        this.address = address;
     }
-
 }

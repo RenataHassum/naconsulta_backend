@@ -6,21 +6,18 @@ public class TelephoneDto {
 
     private Long id;
     private String telephone;
-    private Long userId;
 
     public TelephoneDto() {
     }
 
-    public TelephoneDto(Long id, String telephone, Long userId) {
+    public TelephoneDto(Long id, String telephone) {
         this.id = id;
         this.telephone = telephone;
-        this.userId = userId;
     }
 
     public TelephoneDto(Telephone entity) {
         id = entity.getId();
         telephone = entity.getTelephone();
-        userId = entity.getUser().getId();
     }
 
     public Long getId() {
@@ -39,11 +36,4 @@ public class TelephoneDto {
         this.telephone = telephone;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 }

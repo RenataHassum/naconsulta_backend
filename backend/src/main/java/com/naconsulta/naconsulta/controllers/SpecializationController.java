@@ -1,6 +1,7 @@
 package com.naconsulta.naconsulta.controllers;
 
 import com.naconsulta.naconsulta.dtos.SpecializationDto;
+import com.naconsulta.naconsulta.dtos.SpecializationMinDto;
 import com.naconsulta.naconsulta.services.SpecializationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +23,9 @@ public class SpecializationController {
     }
 
     @GetMapping
-    public ResponseEntity<List<SpecializationDto>> findAllOrByName(
+    public ResponseEntity<List<SpecializationMinDto>> findAllOrByName(
             @RequestParam(name = "name", defaultValue = "") String name) {
-        List<SpecializationDto> dto = service.findAllOrByName(name);
+        List<SpecializationMinDto> dto = service.findAllOrByName(name);
         return ResponseEntity.ok(dto);
     }
 

@@ -12,7 +12,7 @@ public class SpecializationDto implements Serializable {
 
     private long id;
     private String name;
-    private Set<DoctorDto> doctors = new HashSet<>();
+    private Set<DoctorMinDto> doctors = new HashSet<>();
 
     public SpecializationDto() {
     }
@@ -29,7 +29,7 @@ public class SpecializationDto implements Serializable {
 
     public SpecializationDto(Specialization entity, Set<Doctor> doctors) {
         this(entity);
-        doctors.forEach(doctor -> this.doctors.add(new DoctorDto(doctor)));
+        doctors.forEach(doctor -> this.doctors.add(new DoctorMinDto(doctor)));
     }
 
     public long getId() {
@@ -48,7 +48,7 @@ public class SpecializationDto implements Serializable {
         this.name = name;
     }
 
-    public Set<DoctorDto> getDoctors() {
+    public Set<DoctorMinDto> getDoctors() {
         return doctors;
     }
 }

@@ -1,6 +1,6 @@
 package com.naconsulta.naconsulta.controllers;
 
-import com.naconsulta.naconsulta.dtos.AddressMinDto;
+import com.naconsulta.naconsulta.dtos.AddressMaxDto;
 import com.naconsulta.naconsulta.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +16,14 @@ public class AddressController {
     AddressService service;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<AddressMinDto> findById(@PathVariable Long id) {
-        AddressMinDto dto = service.findbyId(id);
+    public ResponseEntity<AddressMaxDto> findById(@PathVariable Long id) {
+        AddressMaxDto dto = service.findbyId(id);
         return ResponseEntity.ok(dto);
     }
 
     @GetMapping
-    public ResponseEntity<List<AddressMinDto>> findAllOrByNeighborhood(@RequestParam(name = "name", defaultValue = "") String name) {
-        List<AddressMinDto> dto = service.findByNeighborhood(name);
+    public ResponseEntity<List<AddressMaxDto>> findAllOrByNeighborhood(@RequestParam(name = "name", defaultValue = "") String name) {
+        List<AddressMaxDto> dto = service.findByNeighborhood(name);
         return ResponseEntity.ok(dto);
     }
 
