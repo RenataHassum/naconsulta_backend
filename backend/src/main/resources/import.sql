@@ -252,5 +252,7 @@ INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-07-09T13:00:00Z', '', '', 39, 9);
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2024-12-11T14:00:00Z', '', '', 40, 3);
 INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-12-10T15:00:00Z', '', '', 31, 17);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-10-05T16:00:00Z', '', '', 1, 13);
+INSERT INTO tb_appointment (date, diagnosis, symptom, user_id, doctor_id) VALUES (TIMESTAMP WITH TIME ZONE '2023-11-22T12:00:00Z', '', '', 1, 18);
 
 

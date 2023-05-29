@@ -1,10 +1,15 @@
 package com.naconsulta.naconsulta.services;
 
 import com.naconsulta.naconsulta.dtos.AppointmentDto;
+import com.naconsulta.naconsulta.dtos.AppointmentMinDto;
 import com.naconsulta.naconsulta.dtos.AppointmentUpdateDto;
+import com.naconsulta.naconsulta.dtos.DoctorMaxAddressEspecializationDto;
 import com.naconsulta.naconsulta.entities.Appointment;
+import com.naconsulta.naconsulta.entities.Doctor;
 import com.naconsulta.naconsulta.entities.User;
 import com.naconsulta.naconsulta.repositories.AppointmentRepository;
+import com.naconsulta.naconsulta.repositories.DoctorRepository;
+import com.naconsulta.naconsulta.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -20,7 +25,28 @@ public class AppointmentService {
     AppointmentRepository repository;
 
     @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    DoctorRepository doctorRepository;
+
+    @Autowired
+    AppointmentRepository appointmentRepository;
+
+    @Autowired
     AuthService authService;
+
+    @Transactional
+    public AppointmentMinDto insert(AppointmentMinDto dto) {
+        Appointment entity = new Appointment();
+        entity.setDate(dto.getDate());
+        User user = userRepository.getReferenceById(dto.getUserId());
+        Doctor doctor =  doctorRepository.getReferenceById(dto.getDoctorId());
+        entity.setUser(user);
+        entity.setDoctor(doctor);
+        entity = appointmentRepository.save(entity);
+        return new AppointmentMinDto(entity);
+    }
 
     @PreAuthorize("hasAnyRole('DOCTOR')")
     @Transactional

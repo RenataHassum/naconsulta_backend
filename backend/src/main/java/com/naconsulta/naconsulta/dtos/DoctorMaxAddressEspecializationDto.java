@@ -1,11 +1,8 @@
 package com.naconsulta.naconsulta.dtos;
 
-import com.naconsulta.naconsulta.entities.Appointment;
 import com.naconsulta.naconsulta.entities.Doctor;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DoctorMaxAddressEspecializationDto implements Serializable {
     private static final long serialVersionUID = 1L;
