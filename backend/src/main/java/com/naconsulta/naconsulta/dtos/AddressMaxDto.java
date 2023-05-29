@@ -18,7 +18,7 @@ public class AddressMaxDto implements Serializable {
     private String room;
     private CityDto city;
 
-    private List<DoctorMaxDto> doctors = new ArrayList<>();
+    private List<DoctorNoAddressDto> doctors = new ArrayList<>();
 
     public AddressMaxDto() {
     }
@@ -45,7 +45,7 @@ public class AddressMaxDto implements Serializable {
 
     public AddressMaxDto(Address entity, List<Doctor> doctors) {
         this(entity);
-        doctors.forEach(doctor -> this.doctors.add(new DoctorMaxDto(doctor)));
+        doctors.forEach(doctor -> this.doctors.add(new DoctorNoAddressDto(doctor)));
     }
 
 
@@ -105,7 +105,7 @@ public class AddressMaxDto implements Serializable {
         this.city = city;
     }
 
-    public List<DoctorMaxDto> getDoctors() {
+    public List<DoctorNoAddressDto> getDoctors() {
         return doctors;
     }
 

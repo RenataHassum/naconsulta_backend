@@ -4,7 +4,7 @@ import com.naconsulta.naconsulta.entities.Doctor;
 
 import java.io.Serializable;
 
-public class DoctorMinDto implements Serializable {
+public class DoctorNoAddressDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
@@ -13,29 +13,29 @@ public class DoctorMinDto implements Serializable {
     private Double appointmentPrice;
     private boolean insurance;
     private Double evaluation;
-    private AddressMinDto address;
+    private SpecializationMinDto specialization;
 
-    public DoctorMinDto() {
+    public DoctorNoAddressDto() {
     }
 
-    public DoctorMinDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, AddressMinDto address) {
+    public DoctorNoAddressDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, SpecializationMinDto specialization) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.appointmentPrice = appointmentPrice;
         this.insurance = insurance;
         this.evaluation = evaluation;
-        this.address = address;
+        this.specialization = specialization;
     }
 
-    public DoctorMinDto(Doctor entity) {
+    public DoctorNoAddressDto(Doctor entity) {
         id = entity.getId();
         firstName = entity.getFirstName();
         lastName = entity.getLastName();
         appointmentPrice = entity.getAppointmentPrice();
         insurance = entity.isInsurance();
         evaluation = entity.getEvaluation();
-        address = new AddressMinDto(entity.getAddress());
+        specialization = new SpecializationMinDto(entity.getSpecialization());
     }
 
     public Long getId() {
@@ -86,11 +86,11 @@ public class DoctorMinDto implements Serializable {
         this.evaluation = evaluation;
     }
 
-    public AddressMinDto getAddress() {
-        return address;
+    public SpecializationMinDto getSpecialization() {
+        return specialization;
     }
 
-    public void setAddress(AddressMinDto address) {
-        this.address = address;
+    public void setSpecialization(SpecializationMinDto specialization) {
+        this.specialization = specialization;
     }
 }

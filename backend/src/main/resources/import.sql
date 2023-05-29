@@ -151,11 +151,15 @@ INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1)
 INSERT INTO tb_city (name, state_id) VALUES ('Rio de Janeiro', 2)
 
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Downson', '100', 'Downson', '13208050', '2A', 1);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Flower', '560', 'Downcarl', '13208050', '2A', 1);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Roses', '890', 'Dowdown', '13208050', '2A', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Betina', '200', 'Betina', '14208050', '3B', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Houston', '300', 'Houston', '15208050', '4C', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Liberty', '400', 'Liberty', '16208050', '5D', 1);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Redrose', '580', 'Liberty Square', '17208051', '7D', 2);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Los Hermanos', '180', 'Libertos', '17208051', '7D', 2);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Brasil', '120', 'Brasil', '16608050', '6D', 2);
-INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Carminha', '180', 'Carminha', '17208051', '7D', 2);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Carminha', '980', 'Carminha', '17208051', '7D', 2);
 
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Alex', 'Brown', 500.00, true, 5.0, 1, 1);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Monica', 'Railway', 350.00, true, 4.8, 1, 1);
