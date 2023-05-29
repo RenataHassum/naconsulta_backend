@@ -1,11 +1,8 @@
 package com.naconsulta.naconsulta.dtos;
 
-import com.naconsulta.naconsulta.entities.Appointment;
 import com.naconsulta.naconsulta.entities.Doctor;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DoctorMinDto implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -16,9 +13,8 @@ public class DoctorMinDto implements Serializable {
     private boolean insurance;
     private Double evaluation;
     private String specialization;
-    private AddressDto address;
 
-    public DoctorMinDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, String specialization, AddressDto address) {
+    public DoctorMinDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, String specialization) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -26,7 +22,6 @@ public class DoctorMinDto implements Serializable {
         this.insurance = insurance;
         this.evaluation = evaluation;
         this.specialization = specialization;
-        this.address = address;
     }
 
     public DoctorMinDto(Doctor entity) {
@@ -37,7 +32,6 @@ public class DoctorMinDto implements Serializable {
         insurance = entity.isInsurance();
         evaluation = entity.getEvaluation();
         specialization = entity.getSpecialization().getName();
-        address = new AddressDto(entity.getAddress());
     }
 
     public Long getId() {
@@ -96,11 +90,4 @@ public class DoctorMinDto implements Serializable {
         this.specialization = specialization;
     }
 
-    public AddressDto getAddress() {
-        return address;
-    }
-
-    public void setAddress(AddressDto address) {
-        this.address = address;
-    }
 }

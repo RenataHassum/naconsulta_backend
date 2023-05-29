@@ -8,7 +8,8 @@ public class TelephoneDto {
     private String telephone;
     private Long userId;
 
-    public TelephoneDto() {}
+    public TelephoneDto() {
+    }
 
     public TelephoneDto(Long id, String telephone, Long userId) {
         this.id = id;

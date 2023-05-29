@@ -23,7 +23,8 @@ public class City implements Serializable {
     @OneToMany(mappedBy = "city")
     Set<Address> adresses = new HashSet<>();
 
-    public City() {}
+    public City() {
+    }
 
     public City(Long id, String name, State state) {
         this.id = id;

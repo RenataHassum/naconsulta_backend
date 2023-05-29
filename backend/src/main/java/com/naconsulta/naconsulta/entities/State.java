@@ -19,7 +19,8 @@ public class State implements Serializable {
     @OneToMany(mappedBy = "state")
     Set<City> cities = new HashSet<>();
 
-    public State() {}
+    public State() {
+    }
 
     public State(Long id, String name) {
         this.id = id;

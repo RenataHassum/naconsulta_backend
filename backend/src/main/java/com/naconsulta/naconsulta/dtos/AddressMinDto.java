@@ -1,10 +1,13 @@
 package com.naconsulta.naconsulta.dtos;
 
 import com.naconsulta.naconsulta.entities.Address;
+import com.naconsulta.naconsulta.entities.Doctor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AddressDto implements Serializable {
+public class AddressMinDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
@@ -15,9 +18,12 @@ public class AddressDto implements Serializable {
     private String room;
     private CityDto city;
 
-    public AddressDto() {}
+    private List<DoctorMinDto> doctors = new ArrayList<>();
 
-    public AddressDto(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, CityDto city) {
+    public AddressMinDto() {
+    }
+
+    public AddressMinDto(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, CityDto city) {
         this.id = id;
         this.publicPlace = publicPlace;
         this.number = number;
@@ -27,15 +33,21 @@ public class AddressDto implements Serializable {
         this.city = city;
     }
 
-    public AddressDto(Address entity) {
-        this.id = entity.getId();
-        this.publicPlace = entity.getPublicPlace();
-        this.number = entity.getNumber();
-        this.neighborhood = entity.getNeighborhood();
-        this.zipCode = entity.getZipCode();
-        this.room = entity.getRoom();
-        this.city = new CityDto(entity.getCity());
+    public AddressMinDto(Address entity) {
+        id = entity.getId();
+        publicPlace = entity.getPublicPlace();
+        number = entity.getNumber();
+        neighborhood = entity.getNeighborhood();
+        zipCode = entity.getZipCode();
+        room = entity.getRoom();
+        city = new CityDto(entity.getCity());
     }
+
+    public AddressMinDto(Address entity, List<Doctor> doctors) {
+        this(entity);
+        doctors.forEach(doctor -> this.doctors.add(new DoctorMinDto(doctor)));
+    }
+
 
     public Long getId() {
         return id;
@@ -92,4 +104,10 @@ public class AddressDto implements Serializable {
     public void setCity(CityDto city) {
         this.city = city;
     }
+
+    public List<DoctorMinDto> getDoctors() {
+        return doctors;
+    }
+
 }
+

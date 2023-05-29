@@ -24,12 +24,12 @@ public class AppointmentService {
 
     @PreAuthorize("hasAnyRole('DOCTOR')")
     @Transactional
-    public AppointmentUpdateDto updateAppointment(Long id, AppointmentUpdateDto dto) {
+    public void updateAppointment(Long id, AppointmentUpdateDto dto) {
         Appointment appointment = repository.getReferenceById(id);
         appointment.setDiagnosis(dto.getDiagnosis());
         appointment.setSymptom(dto.getSymptom());
         repository.save(appointment);
-        return new AppointmentUpdateDto(appointment);
+        new AppointmentUpdateDto(appointment);
     }
 
     @Transactional(readOnly = true)

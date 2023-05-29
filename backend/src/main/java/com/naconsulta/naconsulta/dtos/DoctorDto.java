@@ -1,9 +1,7 @@
 package com.naconsulta.naconsulta.dtos;
 
-import com.naconsulta.naconsulta.entities.Address;
 import com.naconsulta.naconsulta.entities.Appointment;
 import com.naconsulta.naconsulta.entities.Doctor;
-import com.naconsulta.naconsulta.entities.Specialization;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,10 +16,10 @@ public class DoctorDto implements Serializable {
     private boolean insurance;
     private Double evaluation;
     private String specialization;
-    private AddressDto address;
+    private AddressMinDto address;
     private List<AppointmentDto> appointments = new ArrayList<>();
 
-    public DoctorDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, String specialization, AddressDto address) {
+    public DoctorDto(Long id, String firstName, String lastName, Double appointmentPrice, boolean insurance, Double evaluation, String specialization, AddressMinDto address) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,7 +38,7 @@ public class DoctorDto implements Serializable {
         insurance = entity.isInsurance();
         evaluation = entity.getEvaluation();
         specialization = entity.getSpecialization().getName();
-        address = new AddressDto(entity.getAddress());
+        address = new AddressMinDto(entity.getAddress());
     }
 
     public DoctorDto(Doctor entity, List<Appointment> appointments) {
@@ -104,11 +102,11 @@ public class DoctorDto implements Serializable {
         this.specialization = specialization;
     }
 
-    public AddressDto getAddress() {
+    public AddressMinDto getAddress() {
         return address;
     }
 
-    public void setAddress(AddressDto address) {
+    public void setAddress(AddressMinDto address) {
         this.address = address;
     }
 

@@ -3,7 +3,6 @@ package com.naconsulta.naconsulta.dtos;
 import com.naconsulta.naconsulta.entities.Appointment;
 
 import java.io.Serializable;
-import java.time.Instant;
 
 public class AppointmentUpdateDto implements Serializable {
     private static final long serialVersionUID = 1L;

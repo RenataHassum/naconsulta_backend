@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "tb_address")
@@ -20,22 +19,23 @@ public class Address implements Serializable {
     private Integer zipCode;
     private String room;
 
-    @OneToMany(mappedBy = "address")
-    private List<Doctor> doctors = new ArrayList<>();
-
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
 
+    @OneToMany(mappedBy = "address")
+    private List<Doctor> doctors = new ArrayList<>();
+
     public Address() {}
 
-    public Address(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room) {
+    public Address(Long id, String publicPlace, String number, String neighborhood, Integer zipCode, String room, City city) {
         this.id = id;
         this.publicPlace = publicPlace;
         this.number = number;
         this.neighborhood = neighborhood;
         this.zipCode = zipCode;
         this.room = room;
+        this.city = city;
     }
 
     public Long getId() {
@@ -86,10 +86,6 @@ public class Address implements Serializable {
         this.room = room;
     }
 
-    public List<Doctor> getDoctors() {
-        return doctors;
-    }
-    
     public City getCity() {
         return city;
     }
@@ -97,4 +93,9 @@ public class Address implements Serializable {
     public void setCity(City city) {
         this.city = city;
     }
+
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+
 }

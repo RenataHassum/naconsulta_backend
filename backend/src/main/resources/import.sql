@@ -145,35 +145,38 @@ INSERT INTO tb_specialization (name) VALUES ('Psiquiatria');
 INSERT INTO tb_specialization (name) VALUES ('Nutrologia');
 
 INSERT INTO tb_state (name) VALUES ('São Paulo');
+INSERT INTO tb_state (name) VALUES ('Rio de Janeiro');
 
 INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1)
+INSERT INTO tb_city (name, state_id) VALUES ('Rio de Janeiro', 2)
 
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Downson', '100', 'Downson', '13208050', '2A', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Betina', '200', 'Betina', '14208050', '3B', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Houston', '300', 'Houston', '15208050', '4C', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Liberty', '400', 'Liberty', '16208050', '5D', 1);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Brasil', '120', 'Brasil', '16608050', '6D', 2);
+INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Rua Carminha', '180', 'Carminha', '17208051', '7D', 2);
 
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Alex', 'Brown', 500.00, true, 5.0, 1, 1);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Monica', 'Railway', 350.00, true, 4.8, 1, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Maria', 'Green', 450.00, false, 4.5, 1, 2);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('João', 'Gray', 350.00, true, 4.7, 2, 3);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Bruno', 'Red', 300.00, false, 4.8, 2, 4);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Rodrigo', 'Black', 320.00, true, 4.9, 2, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Monica', 'Beff', 460.00, true, 4.9, 3, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Vanessa', 'Always', 310.00, true, 4.9, 3, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Amanda', 'Forget', 280.00, true, 4.9, 3, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Beatriz', 'Netto', 180.00, true, 4.9, 4, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Dione', 'Guimarães', 120.00, true, 4.9, 4, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Monica', 'Chubaka', 400.00, true, 4.9, 4, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Renata', 'Wars', 170.00, true, 4.9, 5, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Ana', 'Coder', 240.00, true, 4.9, 5, 1);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Maria', 'Green', 450.00, false, 4.5, 1, 1);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('João', 'Gray', 350.00, true, 4.7, 2, 2);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Bruno', 'Red', 300.00, false, 4.8, 2, 2);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Rodrigo', 'Black', 320.00, true, 4.9, 2, 2);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Monica', 'Beff', 460.00, true, 4.9, 3, 3);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Vanessa', 'Always', 310.00, false, 4.9, 3, 3);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Amanda', 'Forget', 280.00, true, 4.9, 3, 4);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Beatriz', 'Netto', 180.00, false, 4.9, 4, 4);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Dione', 'Guimarães', 120.00, true, 4.9, 4, 5);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Monica', 'Chubaka', 400.00, true, 4.9, 4, 5);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Renata', 'Wars', 170.00, false, 4.9, 5, 6);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Ana', 'Coder', 240.00, true, 4.9, 5, 6);
 INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Adalberto', 'Bingor', 180.00, true, 4.9, 5, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Alvaro', 'Fernandes', 230.00, true, 4.9, 6, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Mike', 'Orange', 320.00, true, 4.9, 6, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Bianca', 'Yellow', 150.00, true, 4.9, 6, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Cristiane', 'Bourbon', 230.00, true, 4.9, 7, 1);
-INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Elenir', 'Chocolaterin', 410.00, true, 4.9, 7, 1);
-
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Alvaro', 'Fernandes', 230.00, true, 4.9, 6, 2);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Mike', 'Orange', 320.00, false, 4.9, 6, 3);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Bianca', 'Yellow', 150.00, false, 4.9, 6, 4);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Cristiane', 'Bourbon', 230.00, true, 4.9, 7, 5);
+INSERT INTO tb_doctor (first_Name, last_Name, appointment_Price, insurance, evaluation, specialization_id, address_id) VALUES ('Elenir', 'Chocolaterin', 410.00, true, 4.9, 7, 6);
 
 INSERT INTO tb_telephone (telephone, user_id) VALUES ('11998765431', 1);
 INSERT INTO tb_telephone (telephone, user_id) VALUES ('11898765432', 1);

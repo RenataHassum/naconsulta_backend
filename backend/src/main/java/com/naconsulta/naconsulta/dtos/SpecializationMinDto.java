@@ -10,7 +10,8 @@ public class SpecializationMinDto implements Serializable {
     private long id;
     private String name;
 
-    public SpecializationMinDto() {}
+    public SpecializationMinDto() {
+    }
 
     public SpecializationMinDto(long id, String name) {
         this.id = id;

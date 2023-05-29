@@ -14,22 +14,19 @@ public class AuthService {
     @Autowired
     private UserRepository userRepository;
 
-    //Pega o usuário logado
     @Transactional(readOnly = true)
-    public User authenticated(){
+    public User authenticated() {
         try {
             String username = SecurityContextHolder.getContext().getAuthentication().getName();
             return userRepository.findByEmail(username);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new UnauthorizedException("Invalid user");
         }
     }
 
     public void validateSelfOrAdmin(Long userId) {
         User user = authenticated();
-//Se não for o mesmo usuário do id && Não for Admin lança exceção!
-        if(!user.getId().equals(userId) && !user.hasRole("ROLE_ADMIN")) {
+        if (!user.getId().equals(userId) && !user.hasRole("ROLE_ADMIN")) {
             throw new ForbiddenException("Access denied");
         }
     }

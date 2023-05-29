@@ -16,7 +16,8 @@ public class UserFormDto implements Serializable {
 
     private List<TelephoneDto> phones = new ArrayList<>();
 
-    public UserFormDto() {}
+    public UserFormDto() {
+    }
 
     public UserFormDto(Long id, String firstName, String lastName, String email) {
         this.id = id;

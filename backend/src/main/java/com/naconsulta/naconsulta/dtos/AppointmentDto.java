@@ -1,14 +1,9 @@
 package com.naconsulta.naconsulta.dtos;
 
 import com.naconsulta.naconsulta.entities.Appointment;
-import com.naconsulta.naconsulta.entities.User;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.Objects;
 
 public class AppointmentDto implements Serializable {
     private static final long serialVersionUID = 1L;
