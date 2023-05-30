@@ -20,6 +20,12 @@ public class AppointmentController {
     @Autowired
     private AppointmentService service;
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping(value = "/{id}")
     public ResponseEntity<AppointmentDto> findById(@PathVariable Long id) {
         AppointmentDto dto = service.findById(id);
