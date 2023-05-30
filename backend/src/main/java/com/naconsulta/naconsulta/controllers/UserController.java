@@ -23,6 +23,12 @@ public class UserController {
     @Autowired
     private UserService service;
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping
     public ResponseEntity<List<UserMinDto>> findAllOrByName(
             @RequestParam(name = "name", defaultValue = "") String name) {

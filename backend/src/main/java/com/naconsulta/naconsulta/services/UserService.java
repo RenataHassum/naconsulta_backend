@@ -7,10 +7,13 @@ import com.naconsulta.naconsulta.entities.User;
 import com.naconsulta.naconsulta.repositories.RoleRepository;
 import com.naconsulta.naconsulta.repositories.TelephoneRepository;
 import com.naconsulta.naconsulta.repositories.UserRepository;
+import com.naconsulta.naconsulta.services.exceptions.DatabaseException;
 import com.naconsulta.naconsulta.services.exceptions.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -43,6 +46,16 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private AuthService authService;
+
+    public void delete(Long id) {
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("Id " + id + " not found");
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Integrity violation");
+        }
+    }
 
     @Transactional(readOnly = true)
     public List<UserMinDto> findAllOrByName(String name) {
