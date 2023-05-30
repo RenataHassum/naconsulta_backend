@@ -12,10 +12,13 @@ public class AppointmentMinDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
     @FutureOrPresent(message = "A data da consulta não pode ser passada")
     private Instant date;
+
     @NotNull(message = "Campo requerido")
     private Long userId;
+
     @NotNull(message = "Campo requerido")
     private Long doctorId;
 

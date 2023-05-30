@@ -10,6 +10,7 @@ public class AppointmentUpdateDto implements Serializable {
 
     @NotBlank(message = "Campo obrigatório")
     private String diagnosis;
+
     @NotBlank(message = "Campo obrigatório")
     private String symptom;
 

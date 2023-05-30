@@ -2,6 +2,8 @@ package com.naconsulta.naconsulta.dtos;
 
 import com.naconsulta.naconsulta.entities.Appointment;
 
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.Instant;
 
@@ -9,10 +11,18 @@ public class AppointmentDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
+    @FutureOrPresent(message = "A data da consulta não pode ser passada")
     private Instant date;
+
+    @NotBlank(message = "Campo obrigatório")
     private String diagnosis;
+
+    @NotBlank(message = "Campo obrigatório")
     private String symptom;
+
     private UserMinDto user;
+
     private DoctorMaxAddressEspecializationDto doctor;
 
     public AppointmentDto() {
