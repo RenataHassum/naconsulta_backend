@@ -1,9 +1,6 @@
 package com.naconsulta.naconsulta.controllers;
 
-import com.naconsulta.naconsulta.dtos.UserFormDto;
-import com.naconsulta.naconsulta.dtos.UserInsertDto;
-import com.naconsulta.naconsulta.dtos.UserMaxDto;
-import com.naconsulta.naconsulta.dtos.UserMinDto;
+import com.naconsulta.naconsulta.dtos.*;
 import com.naconsulta.naconsulta.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +19,12 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<UserFormDto> update(@PathVariable Long id, @Valid @RequestBody UserUpdateDto dto) {
+        UserFormDto newDto = service.update(id, dto);
+        return ResponseEntity.ok().body(newDto);
+    }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {

@@ -10,12 +10,15 @@ public class UserMinDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
-    @Email(message = "Favor inserir um email válido")
-    private String email;
+
     @NotBlank(message = "Campo obrigatório")
     private String firstName;
+
     @NotBlank(message = "Campo obrigatório")
     private String lastName;
+
+    @Email(message = "Favor inserir um email válido")
+    private String email;
 
     public UserMinDto() {
     }

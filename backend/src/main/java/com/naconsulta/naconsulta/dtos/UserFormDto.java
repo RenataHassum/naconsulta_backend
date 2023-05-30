@@ -1,27 +1,30 @@
 package com.naconsulta.naconsulta.dtos;
 
 import com.naconsulta.naconsulta.entities.Role;
-import com.naconsulta.naconsulta.entities.Telephone;
 import com.naconsulta.naconsulta.entities.User;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class UserFormDto implements Serializable {
     private static final long serialVersionUID = 1L;
+
     private Long id;
     @NotBlank(message = "Campo obrigatório")
     private String firstName;
+
     @NotBlank(message = "Campo obrigatório")
     private String lastName;
+
     @NotBlank(message = "Campo obrigatório")
     private String gender;
+
+    @Email(message = "Favor inserir um email válido")
     private String email;
-    private List<TelephoneDto> phones = new ArrayList<>();
+
     private Set<RoleDto> roles = new HashSet<>();
 
     public UserFormDto() {
@@ -36,16 +39,15 @@ public class UserFormDto implements Serializable {
     }
 
     public UserFormDto(User entity) {
-        this.id = entity.getId();
-        this.firstName = entity.getFirstName();
-        this.lastName = entity.getLastName();
-        this.gender = entity.getGender();
-        this.email = entity.getEmail();
+        id = entity.getId();
+        firstName = entity.getFirstName();
+        lastName = entity.getLastName();
+        gender = entity.getGender();
+        email = entity.getEmail();
     }
 
-    public UserFormDto(User entity, List<Telephone> phones, Set<Role> roles) {
+    public UserFormDto(User entity, Set<Role> roles) {
         this(entity);
-        phones.forEach(phone -> this.phones.add(new TelephoneDto(phone)));
         roles.forEach(role -> this.roles.add(new RoleDto(role)));
     }
 
@@ -89,12 +91,7 @@ public class UserFormDto implements Serializable {
         this.email = email;
     }
 
-    public List<TelephoneDto> getPhones() {
-        return phones;
-    }
-
     public Set<RoleDto> getRoles() {
         return roles;
     }
-
 }

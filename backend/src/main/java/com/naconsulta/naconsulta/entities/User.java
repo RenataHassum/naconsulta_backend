@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "tb_user")
-public class User implements UserDetails,Serializable {
+public class User implements UserDetails, Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -24,9 +24,6 @@ public class User implements UserDetails,Serializable {
     @Column(unique = true)
     private String email;
     private String password;
-
-    @OneToMany(mappedBy = "user")
-    private List<Telephone> phones = new ArrayList<>();
 
     @OneToMany(mappedBy = "user")
     private List<Appointment> appointments = new ArrayList<>();
@@ -98,10 +95,6 @@ public class User implements UserDetails,Serializable {
         this.password = password;
     }
 
-    public List<Telephone> getPhones() {
-        return phones;
-    }
-
     public List<Appointment> getAppointments() {
         return appointments;
     }
@@ -154,7 +147,7 @@ public class User implements UserDetails,Serializable {
 
     public boolean hasRole(String roleName) {
         for (Role role : roles) {
-            if(role.getAuthority().equals(roleName)) {
+            if (role.getAuthority().equals(roleName)) {
                 return true;
             }
         }

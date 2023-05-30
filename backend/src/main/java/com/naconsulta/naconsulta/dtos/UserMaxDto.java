@@ -2,7 +2,6 @@ package com.naconsulta.naconsulta.dtos;
 
 import com.naconsulta.naconsulta.entities.Appointment;
 import com.naconsulta.naconsulta.entities.Role;
-import com.naconsulta.naconsulta.entities.Telephone;
 import com.naconsulta.naconsulta.entities.User;
 
 import javax.validation.constraints.Email;
@@ -15,22 +14,27 @@ import java.util.Set;
 
 public class UserMaxDto implements Serializable {
     private static final long serialVersionUID = 1L;
+
     private Long id;
+
     @NotBlank(message = "Campo obrigatório")
     private String firstName;
+
     @NotBlank(message = "Campo obrigatório")
     private String lastName;
+
+    @NotBlank(message = "Campo obrigatório")
     private String gender;
+
     @Email(message = "Favor inserir um email válido")
     private String email;
-
-    private List<TelephoneDto> phones = new ArrayList<>();
 
     private List<AppointmentDto> appointments = new ArrayList<>();
 
     private Set<RoleDto> roles = new HashSet<>();
 
-    public UserMaxDto() {}
+    public UserMaxDto() {
+    }
 
     public UserMaxDto(Long id, String firstName, String lastName, String gender, String email) {
         this.id = id;
@@ -48,9 +52,8 @@ public class UserMaxDto implements Serializable {
         email = entity.getEmail();
     }
 
-    public UserMaxDto(User entity, List<Telephone> phones, Set<Role> roles, List<Appointment> appointments) {
+    public UserMaxDto(User entity, Set<Role> roles, List<Appointment> appointments) {
         this(entity);
-        phones.forEach(phone -> this.phones.add(new TelephoneDto(phone)));
         roles.forEach(role -> this.roles.add(new RoleDto(role)));
         appointments.forEach((appointment -> this.appointments.add(new AppointmentDto(appointment))));
     }
@@ -93,10 +96,6 @@ public class UserMaxDto implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<TelephoneDto> getPhones() {
-        return phones;
     }
 
     public Set<RoleDto> getRoles() {
