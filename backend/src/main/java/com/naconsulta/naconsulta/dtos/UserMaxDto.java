@@ -5,6 +5,8 @@ import com.naconsulta.naconsulta.entities.Role;
 import com.naconsulta.naconsulta.entities.Telephone;
 import com.naconsulta.naconsulta.entities.User;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,9 +16,12 @@ import java.util.Set;
 public class UserMaxDto implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long id;
+    @NotBlank(message = "Campo obrigatório")
     private String firstName;
+    @NotBlank(message = "Campo obrigatório")
     private String lastName;
     private String gender;
+    @Email(message = "Favor inserir um email válido")
     private String email;
 
     private List<TelephoneDto> phones = new ArrayList<>();
@@ -24,6 +29,8 @@ public class UserMaxDto implements Serializable {
     private List<AppointmentDto> appointments = new ArrayList<>();
 
     private Set<RoleDto> roles = new HashSet<>();
+
+    public UserMaxDto() {}
 
     public UserMaxDto(Long id, String firstName, String lastName, String gender, String email) {
         this.id = id;
