@@ -11,6 +11,8 @@ import com.naconsulta.naconsulta.services.exceptions.ResourceNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,7 +20,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -40,6 +44,12 @@ public class UserService implements UserDetailsService {
     @Autowired
     private AuthService authService;
 
+    @Transactional(readOnly = true)
+    public List<UserMinDto> findAllOrByName(String name) {
+        List<User> list = repository.searchByName(name);
+        return list.stream().map(x -> new UserMinDto(x)).collect(Collectors.toList());
+    }
+
     @Transactional
     public UserFormDto insert(UserInsertDto dto) {
         User entity = new User();
@@ -56,11 +66,11 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional(readOnly = true)
-    public UserFormDto findById(Long id) {
+    public UserMaxDto findById(Long id) {
         authService.validateSelfOrAdmin(id);
         Optional<User> obj = repository.findById(id);
         User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Resource not found"));
-        return new UserFormDto(entity, entity.getPhones(), entity.getRoles());
+        return new UserMaxDto(entity, entity.getPhones(), entity.getRoles(), entity.getAppointments());
     }
 
     private void copyDtoToEntity(UserFormDto dto, User entity) {
@@ -69,13 +79,13 @@ public class UserService implements UserDetailsService {
         entity.setGender(dto.getGender());
         entity.setEmail(dto.getEmail());
 
-//        entity.getRoles().clear();
+        entity.getRoles().clear();
         for (RoleDto roleDto : dto.getRoles()) {
             Role role = roleRepository.getReferenceById(roleDto.getId());
             entity.getRoles().add(role);
         }
 
-//        entity.getPhones().clear();
+        entity.getPhones().clear();
         for (TelephoneDto telephoneDto : dto.getPhones()) {
             Telephone telephone = telephoneRepository.getReferenceById(telephoneDto.getId());
             entity.getPhones().add(telephone);

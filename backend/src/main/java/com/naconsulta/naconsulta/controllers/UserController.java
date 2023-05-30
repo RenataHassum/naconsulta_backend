@@ -3,14 +3,18 @@ package com.naconsulta.naconsulta.controllers;
 import com.naconsulta.naconsulta.dtos.UserFormDto;
 import com.naconsulta.naconsulta.dtos.UserInsertDto;
 import com.naconsulta.naconsulta.dtos.UserMaxDto;
+import com.naconsulta.naconsulta.dtos.UserMinDto;
 import com.naconsulta.naconsulta.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -18,6 +22,13 @@ public class UserController {
 
     @Autowired
     private UserService service;
+
+    @GetMapping
+    public ResponseEntity<List<UserMinDto>> findAllOrByName(
+            @RequestParam(name = "name", defaultValue = "") String name) {
+        List<UserMinDto> list = service.findAllOrByName(name);
+        return ResponseEntity.ok().body(list);
+    }
 
     @PostMapping
     public ResponseEntity<UserFormDto> insert(@Valid @RequestBody UserInsertDto dto) {
@@ -33,8 +44,8 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<UserFormDto> findById(@PathVariable Long id) {
-        UserFormDto dto = service.findById(id);
+    public ResponseEntity<UserMaxDto> findById(@PathVariable Long id) {
+        UserMaxDto dto = service.findById(id);
         return ResponseEntity.ok().body(dto);
     }
 }

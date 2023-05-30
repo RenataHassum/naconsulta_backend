@@ -7,10 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
-//    @Query("SELECT obj FROM Doctor obj " +
-//            "WHERE UPPER(obj.firstName) LIKE UPPER(CONCAT('%', :name, '%')) UPPER(CONCAT('%', :last, '%')) ")
-//    List<Doctor> searchByName(String name, String last);
-
     @Query("SELECT obj FROM Doctor obj " +
             "WHERE UPPER(obj.firstName) LIKE UPPER(CONCAT('%', :name, '%')) ")
     List<Doctor> searchByName(String name);
