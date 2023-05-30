@@ -36,17 +36,20 @@ public class AppointmentService {
     @Autowired
     AuthService authService;
 
+    @PreAuthorize("hasAnyRole('USER')")
     @Transactional(readOnly = true)
     public AppointmentDto findById(Long id) {
-        authService.validateSelfOrAdmin(id);
+        authService.validateAppointmentSelfOrAdmin(id);
         Appointment appointment = repository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Recurso não encontrado"));
+
         return new AppointmentDto(appointment);
     }
 
+    @PreAuthorize("hasAnyRole('USER')")
     @Transactional
     public AppointmentMinDto insert(AppointmentMinDto dto) {
-        authService.validateSelfOrAdmin(dto.getUserId());
+
         Appointment entity = new Appointment();
         copyDtoToEntity(dto, entity);
         entity = appointmentRepository.save(entity);
@@ -56,7 +59,7 @@ public class AppointmentService {
     @PreAuthorize("hasAnyRole('DOCTOR')")
     @Transactional
     public void updateAppointment(Long id, AppointmentUpdateDto dto) {
-        authService.validateSelfOrAdmin(id);
+
         Appointment appointment = repository.getReferenceById(id);
         appointment.setDiagnosis(dto.getDiagnosis());
         appointment.setSymptom(dto.getSymptom());
