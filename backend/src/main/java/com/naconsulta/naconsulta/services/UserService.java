@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -86,6 +87,7 @@ public class UserService implements UserDetailsService {
         return new UserMaxDto(entity, entity.getRoles(), entity.getAppointments());
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @Transactional(readOnly = true)
     public UserMaxDto userLogged() {
         User entity = authService.authenticated();
@@ -97,7 +99,7 @@ public class UserService implements UserDetailsService {
         entity.setLastName(dto.getLastName());
         entity.setGender(dto.getGender());
         entity.setEmail(dto.getEmail());
-        
+
         entity.getRoles().clear();
         for (RoleDto roleDto : dto.getRoles()) {
             Role role = roleRepository.getReferenceById(roleDto.getId());

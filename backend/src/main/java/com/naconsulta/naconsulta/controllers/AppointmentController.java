@@ -20,6 +20,12 @@ public class AppointmentController {
     @Autowired
     private AppointmentService service;
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<AppointmentDto> findById(@PathVariable Long id) {
+        AppointmentDto dto = service.findById(id);
+        return ResponseEntity.ok(dto);
+    }
+
     @PostMapping
     public ResponseEntity<AppointmentMinDto> insert(@Valid @RequestBody AppointmentMinDto dto) {
         dto = service.insert(dto);
@@ -31,7 +37,7 @@ public class AppointmentController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Void> updateAppointment(@PathVariable Long id, @RequestBody AppointmentUpdateDto dto) {
+    public ResponseEntity<Void> updateAppointment(@PathVariable Long id, @Valid @RequestBody AppointmentUpdateDto dto) {
         service.updateAppointment(id, dto);
         return ResponseEntity.noContent().build();
     }
