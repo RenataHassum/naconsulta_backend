@@ -31,4 +31,6 @@ public class DoctorService {
         List<Doctor> result = repository.searchByName(name);
         return result.stream().map(x -> new DoctorMinEspecializationDto(x)).collect(Collectors.toList());
     }
+
+
 }

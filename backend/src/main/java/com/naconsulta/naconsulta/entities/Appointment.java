@@ -102,4 +102,3 @@ public class Appointment implements Serializable {
         return Objects.hash(getId());
     }
 }
-

@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
+import java.time.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,6 +37,25 @@ public class AppointmentService {
 
     @Autowired
     AuthService authService;
+
+    @PreAuthorize("hasAnyRole('DOCTOR', 'ADMIN')")
+    @Transactional(readOnly = true)
+    public List<AppointmentDto> getReport(String minDateStr, String maxDateStr, String name) {
+
+        LocalDate minDate = minDateStr.equals("") ? LocalDate.now() : LocalDate.parse(minDateStr);
+        LocalDate maxDate = maxDateStr.equals("") ? LocalDate.now().plusMonths(1) : LocalDate.parse(maxDateStr);
+
+        LocalDateTime minDateTime = LocalDateTime.of(minDate, LocalTime.MIN);
+        LocalDateTime maxDateTime = LocalDateTime.of(maxDate, LocalTime.MAX);
+
+        Instant minInstant = minDateTime.toInstant(ZoneOffset.UTC);
+        Instant maxInstant = maxDateTime.toInstant(ZoneOffset.UTC);
+
+        List<Appointment> list = appointmentRepository.searchAppointments(minInstant, maxInstant, name);
+
+        return list.stream().map(appointment -> new AppointmentDto(appointment)).collect(Collectors.toList());
+    }
+
 
     @Transactional(propagation = Propagation.SUPPORTS)
     public void delete(Long id) {
