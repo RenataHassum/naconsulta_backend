@@ -6,6 +6,7 @@ import com.naconsulta.naconsulta.dtos.AppointmentUpdateDto;
 import com.naconsulta.naconsulta.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -22,11 +23,11 @@ public class AppointmentController {
     private AppointmentService service;
 
     @GetMapping(value = "/report")
-    public ResponseEntity<List<AppointmentDto>> getReport(
+    public ResponseEntity<List<AppointmentMinDto>> getReport(
             @RequestParam(name = "minDate", defaultValue = "") String minDateStr,
             @RequestParam(name = "maxDate", defaultValue = "") String maxDateStr,
             @RequestParam(name = "name", defaultValue = "") String nameStr) {
-        List<AppointmentDto> dto = service.getReport(minDateStr, maxDateStr, nameStr);
+        List<AppointmentMinDto> dto = service.getReport(minDateStr, maxDateStr, nameStr);
         return ResponseEntity.ok(dto);
     }
 

@@ -1,8 +1,10 @@
 package com.naconsulta.naconsulta.services;
 
 import com.naconsulta.naconsulta.entities.Appointment;
+import com.naconsulta.naconsulta.entities.Doctor;
 import com.naconsulta.naconsulta.entities.User;
 import com.naconsulta.naconsulta.repositories.AppointmentRepository;
+import com.naconsulta.naconsulta.repositories.DoctorRepository;
 import com.naconsulta.naconsulta.repositories.UserRepository;
 import com.naconsulta.naconsulta.services.exceptions.ForbiddenException;
 import com.naconsulta.naconsulta.services.exceptions.UnauthorizedException;
@@ -18,6 +20,9 @@ public class AuthService {
 
     @Autowired
     private AppointmentRepository appointmentRepository;
+
+    @Autowired
+    private DoctorRepository doctorRepository;
 
     @Transactional(readOnly = true)
     public User authenticated() {
@@ -41,6 +46,15 @@ public class AuthService {
         Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
 
         if (!user.getId().equals(appointment.getUser().getId()) && !user.hasRole("ROLE_ADMIN")) {
+            throw new ForbiddenException("Access denied!");
+        }
+    }
+
+    public void validateAppointmentDoctor(Long appointmentId) {
+        User user = authenticated();
+        Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
+
+        if (!user.getId().equals(appointment.getDoctor().getId())) {
             throw new ForbiddenException("Access denied!");
         }
     }
