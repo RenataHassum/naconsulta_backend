@@ -1,13 +1,13 @@
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Alex', 'Brown', 'masculino', 'alex@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Maria', 'Green', 'feminino', 'maria@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Arthur', 'Gray', 'masculino', 'arthur@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('John', 'Doe', 'masculino', 'john.doe@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Emma', 'Johnson', 'feminino', 'emma@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Michael', 'Smith', 'masculino', 'michael.smith@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Sophia', 'Brown', 'feminino', 'sophia.brown@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Daniel', 'Taylor', 'masculino', 'daniel.taylor@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Olivia', 'Johnson', 'feminino', 'olivia.johnson@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('William', 'Anderson', 'masculino', 'william.anderson@example.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('John', 'Doe', 'masculino', 'john@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Emma', 'Johnson', 'feminino', 'emma@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Michael', 'Smith', 'masculino', 'michael@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Sophia', 'Brown', 'feminino', 'sophia@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Daniel', 'Taylor', 'masculino', 'daniel@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('Olivia', 'Johnson', 'feminino', 'olivia@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (first_Name, last_Name, gender, email, password) VALUES ('William', 'Anderson', 'masculino', 'william@gmail.com', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 
 INSERT INTO tb_role (authority) VALUES ('ROLE_ADMIN');
 INSERT INTO tb_role (authority) VALUES ('ROLE_DOCTOR');
@@ -40,8 +40,8 @@ INSERT INTO tb_specialization (name) VALUES ('Nutrologia');
 INSERT INTO tb_state (name) VALUES ('São Paulo');
 INSERT INTO tb_state (name) VALUES ('Rio de Janeiro');
 
-INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1)
-INSERT INTO tb_city (name, state_id) VALUES ('Rio de Janeiro', 2)
+INSERT INTO tb_city (name, state_id) VALUES ('São Paulo', 1);
+INSERT INTO tb_city (name, state_id) VALUES ('Rio de Janeiro', 2);
 
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Main Street', '123', 'Downtown', '12345', 'Apt 1B', 1);
 INSERT INTO tb_address (public_Place, number, neighborhood, zip_Code, room, city_id) VALUES ('Park Avenue', '456', 'Downson', '67890', 'Suite 5C', 1);

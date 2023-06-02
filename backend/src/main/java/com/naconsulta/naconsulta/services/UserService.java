@@ -42,13 +42,25 @@ public class UserService implements UserDetailsService {
     @Autowired
     private AuthService authService;
 
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @Transactional
-    public UserFormDto update(Long id, UserUpdateDto dto) {
+    public UserFormDto update(Long id, UserFormDto dto) {
         try {
             User entity = repository.getReferenceById(id);
-            copyDtoToEntity(dto, entity);
+            authService.validateSelf(id);
+            entity.setFirstName(dto.getFirstName());
+            entity.setLastName(dto.getLastName());
+            entity.setGender(dto.getGender());
+            entity.getRoles().clear();
+            for (RoleDto roleDto : dto.getRoles()) {
+                Role role = roleRepository.getReferenceById(roleDto.getId());
+                entity.getRoles().add(role);
+            }
+
             entity = repository.save(entity);
+
             return new UserFormDto(entity, entity.getRoles());
+
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id: " + id + " not found");
         }
@@ -57,14 +69,25 @@ public class UserService implements UserDetailsService {
     @Transactional
     public UserFormDto insert(UserInsertDto dto) {
         User entity = new User();
-        copyDtoToEntity(dto, entity);
+        entity.setFirstName(dto.getFirstName());
+        entity.setLastName(dto.getLastName());
+        entity.setGender(dto.getGender());
+        entity.setEmail(dto.getEmail());
+        entity.getRoles().clear();
+        for (RoleDto roleDto : dto.getRoles()) {
+            Role role = roleRepository.getReferenceById(roleDto.getId());
+            entity.getRoles().add(role);
+        }
+
         entity.setPassword(passwordEncoder.encode(dto.getPassword()));
         entity = repository.save(entity);
         return new UserFormDto(entity, entity.getRoles());
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public void delete(Long id) {
         try {
+            authService.validateSelf(id);
             repository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException("Id " + id + " not found");
@@ -73,12 +96,14 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_DOCTOR')")
     @Transactional(readOnly = true)
     public List<UserMinDto> findAllOrByName(String name) {
         List<User> list = repository.searchByName(name);
         return list.stream().map(x -> new UserMinDto(x)).collect(Collectors.toList());
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @Transactional(readOnly = true)
     public UserMaxDto findById(Long id) {
         authService.validateSelfOrAdmin(id);
@@ -87,24 +112,12 @@ public class UserService implements UserDetailsService {
         return new UserMaxDto(entity, entity.getRoles(), entity.getAppointments());
     }
 
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     @Transactional(readOnly = true)
     public UserMaxDto userLogged() {
         User entity = authService.authenticated();
         return new UserMaxDto(entity, entity.getRoles(), entity.getAppointments());
-    }
-
-    private void copyDtoToEntity(UserFormDto dto, User entity) {
-        entity.setFirstName(dto.getFirstName());
-        entity.setLastName(dto.getLastName());
-        entity.setGender(dto.getGender());
-        entity.setEmail(dto.getEmail());
-
-        entity.getRoles().clear();
-        for (RoleDto roleDto : dto.getRoles()) {
-            Role role = roleRepository.getReferenceById(roleDto.getId());
-            entity.getRoles().add(role);
-        }
     }
 
     @Override

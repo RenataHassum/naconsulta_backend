@@ -3,8 +3,6 @@ package com.naconsulta.naconsulta.controllers;
 import com.naconsulta.naconsulta.dtos.*;
 import com.naconsulta.naconsulta.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

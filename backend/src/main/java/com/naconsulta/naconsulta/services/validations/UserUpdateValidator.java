@@ -1,6 +1,5 @@
 package com.naconsulta.naconsulta.services.validations;
 
-
 import com.naconsulta.naconsulta.controllers.exceptions.FieldMessage;
 import com.naconsulta.naconsulta.dtos.UserUpdateDto;
 import com.naconsulta.naconsulta.entities.User;
@@ -48,3 +47,4 @@ public class UserUpdateValidator implements ConstraintValidator<UserUpdateValid,
         return list.isEmpty();
     }
 }
+

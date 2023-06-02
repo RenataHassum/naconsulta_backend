@@ -17,7 +17,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.*;
@@ -39,7 +38,7 @@ public class AppointmentService {
     @Autowired
     AuthService authService;
 
-    @PreAuthorize("hasAnyRole('DOCTOR', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_DOCTOR', 'ROLE_ADMIN')")
     @Transactional(readOnly = true)
     public List<AppointmentMinDto> getReport(String minDateStr, String maxDateStr, String name) {
 
@@ -57,9 +56,11 @@ public class AppointmentService {
         return list.stream().map(appointment -> new AppointmentMinDto(appointment)).collect(Collectors.toList());
     }
 
-    @Transactional(propagation = Propagation.SUPPORTS)
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @Transactional
     public void delete(Long id) {
         try {
+            authService.validateDeleteAccess(id);
             appointmentRepository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
             throw new ResourceNotFoundException("Recurso não encontrado");
@@ -68,27 +69,34 @@ public class AppointmentService {
         }
     }
 
-    @PreAuthorize("hasAnyRole('USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @Transactional(readOnly = true)
     public AppointmentDto findById(Long id) {
+        authService.validateAppointmentSelfOrAdmin(id);
+
         Appointment appointment = appointmentRepository.findById(id).orElseThrow(
                 () -> new ResourceNotFoundException("Recurso não encontrado"));
-        authService.validateAppointmentSelfOrAdmin(id);
+
 
         return new AppointmentDto(appointment);
     }
 
-    @PreAuthorize("hasAnyRole('USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @Transactional
     public AppointmentMinDto insert(AppointmentMinDto dto) {
-        User user = authService.authenticated();
+        authService.validateSelf(dto.getUserId());
+
         Appointment entity = new Appointment();
-        copyDtoToEntity(dto, entity);
+        entity.setDate(dto.getDate());
+        User user = userRepository.getReferenceById(dto.getUserId());
+        Doctor doctor = doctorRepository.getReferenceById(dto.getDoctorId());
+        entity.setUser(user);
+        entity.setDoctor(doctor);
         entity = appointmentRepository.save(entity);
         return new AppointmentMinDto(entity);
     }
 
-    @PreAuthorize("hasAnyRole('DOCTOR')")
+    @PreAuthorize("hasAnyRole('ROLE_DOCTOR')")
     @Transactional
     public void updateAppointment(Long id, AppointmentUpdateDto dto) {
         try {
@@ -107,6 +115,7 @@ public class AppointmentService {
         }
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @Transactional(readOnly = true)
     public List<AppointmentDto> appointmentsLoggedUser() {
         User user = authService.authenticated();
@@ -114,11 +123,4 @@ public class AppointmentService {
         return list.stream().map(x -> new AppointmentDto(x)).collect(Collectors.toList());
     }
 
-    private void copyDtoToEntity(AppointmentMinDto dto, Appointment entity) {
-        entity.setDate(dto.getDate());
-        User user = userRepository.getReferenceById(dto.getUserId());
-        Doctor doctor = doctorRepository.getReferenceById(dto.getDoctorId());
-        entity.setUser(user);
-        entity.setDoctor(doctor);
-    }
 }
