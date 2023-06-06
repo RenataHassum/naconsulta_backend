@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
@@ -28,6 +29,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     private Environment env;
 
     private static final String[] PUBLIC = {"/oauth/token", "/h2-console/**"};
+    private static final String[] PUBLIC_USER_INSERT = {"/users/**"};
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -36,8 +38,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
             http.headers().frameOptions().disable();
         }
-
-        http.authorizeRequests().antMatchers(PUBLIC).permitAll().anyRequest().authenticated();
+        
+        http.authorizeRequests()
+                .antMatchers(PUBLIC).permitAll()
+                .antMatchers(HttpMethod.POST, PUBLIC_USER_INSERT).permitAll()
+                .anyRequest().authenticated();
 
         http.cors().configurationSource(corsConfigurationSource());
     }

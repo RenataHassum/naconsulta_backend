@@ -58,6 +58,21 @@ public class AuthService {
         }
     }
 
+    public void validateAppointmentAccess(Long appointmentId) {
+        User user = authenticated();
+        Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
+
+        if (!user.hasRole("ROLE_ADMIN")) {
+            if (user.hasRole("ROLE_DOCTOR") && user.getId().equals(appointment.getDoctor().getId())) {
+                return;
+            } else if (user.hasRole("ROLE_USER") && user.getId().equals(appointment.getUser().getId())) {
+                return;
+            }
+
+            throw new ForbiddenException("Access denied!");
+        }
+    }
+
     public void validateAppointmentDoctor(Long appointmentId) {
         User user = authenticated();
         Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
@@ -79,5 +94,6 @@ public class AuthService {
             throw new ForbiddenException("Acesso negado");
         }
     }
+
 }
 

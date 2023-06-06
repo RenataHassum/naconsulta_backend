@@ -19,6 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -69,22 +70,27 @@ public class AppointmentService {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_DOCTOR', 'ROLE_ADMIN')")
     @Transactional(readOnly = true)
     public AppointmentDto findById(Long id) {
-        authService.validateAppointmentSelfOrAdmin(id);
+        try {
+            authService.validateAppointmentAccess(id);
 
-        Appointment appointment = appointmentRepository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("Recurso não encontrado"));
-
-
-        return new AppointmentDto(appointment);
+            Appointment appointment = appointmentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Recurso não encontrado"));
+            return new AppointmentDto(appointment);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Recurso não encontrado");
+        }
     }
 
     @PreAuthorize("hasAnyRole('ROLE_USER')")
     @Transactional
     public AppointmentMinDto insert(AppointmentMinDto dto) {
         authService.validateSelf(dto.getUserId());
+
+        if (dto.getUserId().equals(dto.getDoctorId())) {
+            throw new UnauthorizedException("O userId e o doctorId não podem ser os mesmos.");
+        }
 
         Appointment entity = new Appointment();
         entity.setDate(dto.getDate());
@@ -100,18 +106,18 @@ public class AppointmentService {
     @Transactional
     public void updateAppointment(Long id, AppointmentUpdateDto dto) {
         try {
-            authService.validateAppointmentDoctor(id);
-
             Appointment appointment = appointmentRepository.getReferenceById(id);
-
+            authService.validateAppointmentDoctor(id);
             if (appointment.checkUpdateDate(appointment.getDate())) {
-                throw new IllegalArgumentException("A data é posterior à data de atualização.");
+                throw new UnauthorizedException("A data é posterior à data de atualização.");
             }
             appointment.setDiagnosis(dto.getDiagnosis());
             appointment.setSymptom(dto.getSymptom());
             appointmentRepository.save(appointment);
         } catch (IllegalArgumentException e) {
             throw new UnauthorizedException("Data de agendamento é posterior à data de atualização");
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException("Recurso não encontrado");
         }
     }
 
