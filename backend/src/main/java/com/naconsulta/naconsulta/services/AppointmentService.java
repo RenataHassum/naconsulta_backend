@@ -70,7 +70,7 @@ public class AppointmentService {
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_DOCTOR', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER')")
     @Transactional(readOnly = true)
     public AppointmentDto findById(Long id) {
         try {

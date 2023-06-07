@@ -34,6 +34,7 @@ public class AuthService {
         }
     }
 
+    @Transactional(readOnly = true)
     public void validateSelf(Long userId) {
         User user = authenticated();
         if (!user.getId().equals(userId)) {
@@ -41,6 +42,7 @@ public class AuthService {
         }
     }
 
+    @Transactional(readOnly = true)
     public void validateSelfOrAdmin(Long userId) {
         User user = authenticated();
         System.out.println("E-mail do usuário autenticado: " + user.getEmail());
@@ -49,15 +51,8 @@ public class AuthService {
         }
     }
 
-    public void validateAppointmentSelfOrAdmin(Long appointmentId) {
-        User user = authenticated();
-        Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
-
-        if (!user.getId().equals(appointment.getUser().getId()) && !user.hasRole("ROLE_ADMIN") && !user.getId().equals(appointment.getDoctor().getId())) {
-            throw new ForbiddenException("Access denied!");
-        }
-    }
-
+    //não funciona no perfil dev apenas no perfil test
+    @Transactional(readOnly = true)
     public void validateAppointmentAccess(Long appointmentId) {
         User user = authenticated();
         Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
@@ -73,6 +68,7 @@ public class AuthService {
         }
     }
 
+    @Transactional(readOnly = true)
     public void validateAppointmentDoctor(Long appointmentId) {
         User user = authenticated();
         Appointment appointment = appointmentRepository.getReferenceById(appointmentId);
@@ -82,6 +78,7 @@ public class AuthService {
         }
     }
 
+    @Transactional(readOnly = true)
     public void validateDeleteAccess(Long appointmentId) {
         User user = authenticated();
         Appointment appointment = appointmentRepository.findById(appointmentId).orElse(null);
