@@ -13,3 +13,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "WHERE UPPER(obj.firstName) LIKE UPPER(CONCAT('%', :name, '%')) ")
     List<User> searchByName(String name);
 }
+

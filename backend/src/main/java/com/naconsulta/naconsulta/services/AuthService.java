@@ -51,7 +51,7 @@ public class AuthService {
         }
     }
 
-    //não funciona no perfil dev apenas no perfil test
+    //não funciona no perfil dev apenas no perfil test e prod
     @Transactional(readOnly = true)
     public void validateAppointmentAccess(Long appointmentId) {
         User user = authenticated();

@@ -29,6 +29,7 @@ public class DoctorService {
     @Transactional(readOnly = true)
     public List<DoctorMinEspecializationDto> findAllOrByName(String name) {
         List<Doctor> result = repository.searchByName(name);
+
         return result.stream().map(x -> new DoctorMinEspecializationDto(x)).collect(Collectors.toList());
     }
 

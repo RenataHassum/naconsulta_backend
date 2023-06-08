@@ -11,5 +11,4 @@ public interface DoctorRepository extends JpaRepository<Doctor, Long> {
     @Query("SELECT obj FROM Doctor obj " +
             "WHERE UPPER(obj.firstName) LIKE UPPER(CONCAT('%', :name, '%')) ")
     List<Doctor> searchByName(String name);
-
 }
